@@ -25,6 +25,7 @@ i32 step_on_turn(u32 dir) {
     if(dir == DIR_UP) // turning right
         return 1;
 
+    // NOTE(nix3l): should never reach this branch
     LOG_ERR("wtf\n");
     return 0;
 }
@@ -50,7 +51,7 @@ int main(void) {
             // turn and get the amount of elements in the cycle
             dir = (dir + 1) % 4;
             if(dir == DIR_DOWN || dir == DIR_UP) num_half_turns ++;
-            elements_in_cycle = dir % 2 == 0 ? COLS - num_half_turns: ROWS - num_half_turns;
+            elements_in_cycle = dir % 2 == 0 ? COLS - num_half_turns : ROWS - num_half_turns;
             // move the pivot to the new index and reset the offset
             pivot = index + step;
             offset = 0;
